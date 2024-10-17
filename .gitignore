@@ -1,0 +1,19 @@
+# ansible
+/ansible/roles/gitlab/files/CA/
+/ansible/roles/gitlab/files/certs/
+
+#terraform
+crash.log
+crash.*.log
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
+# personal files
+/test/
+notes.txt
+
+# vagrant
+.vagrant/

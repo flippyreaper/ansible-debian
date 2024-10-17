@@ -1,0 +1,49 @@
+
+apt:
+  packages:
+  - default-jre # required for @openapitools/openapi-generator-cli
+  - python3
+  - python3-pip
+  - virtualbox
+  - rclone # raspberry pi cloud sync
+  - bridge-utils
+  - cmake # for plasma docker control widge
+  - dnsutils # dig command
+  - unzip
+  - wget
+  - rsync
+  - cron
+  - htop
+  - iftop
+  - iotop
+  - ethtool
+  - traceroute
+  - nmap
+  - net-tools
+  - nethogs
+  - samba
+  - cifs-utils
+  - whois
+  - make
+  - libssl-dev
+  - build-essential
+  - libssl-dev
+  - libbz2-dev
+  - libsqlite3-dev
+  - llvm
+  - libncursesw5-dev
+  - tk-dev
+  - libxml2-dev
+  - libffi-dev
+  - liblzma-dev
+  - ffmpeg
+  - ffmpeg-doc
+  #mine
+  - git
+  - curl
+  - docker-ce
+  - tmux
+  - fish
+  - neofetch
+  - cmatrix
+  - nano
