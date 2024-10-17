@@ -37,7 +37,6 @@ apt:
   - libffi-dev
   - liblzma-dev
   - ffmpeg
-  - ffmpeg-doc
   #mine
   - git
   - curl
@@ -47,3 +46,54 @@ apt:
   - neofetch
   - cmatrix
   - nano
+  # - eza homebrew
+  - ca-certificates
+  - mediainfo
+  - smartmontools
+  - hdparm
+  - btop
+  - iperf3
+  - net-tools
+
+docker_volumes:
+- paperless-data
+- paperless-db
+- paperless-export
+- paperless-media
+- paperless-redisdata
+- portainer_db
+- xbackbone-config
+- xbackbone-db
+- bazarr-config
+- lidarr-config
+- radarr-config
+- sonarr-config
+- portainer-db
+- prowlarr-config
+- whisparr-config
+- readarr-config
+- tautulli-config
+- sabnzb-config
+- resilio-config
+- qbittorrent-config
+- pyload-config
+- pihole-config
+- pihole-dnsmasq
+- overseerr-dnsmasq
+- npm-data
+- npm-ssl
+- npm-db
+- lubelogger-config
+- lubelogger-data
+- lubelogger-translations
+- lubelogger-documents
+- lubelogger-images
+- lubelogger-temp
+- lubelogger-log
+- lubelogger-key
+- linkwarden-db
+- jellyfin-config
+- homeassistant-config
+- esphome-config
+- deluge-config
+

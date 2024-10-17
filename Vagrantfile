@@ -4,7 +4,7 @@ Vagrant.configure('2') do |config|
   #Configure Vagrant debian box in Virtualbox
   config.vm.define "debian-drop" do |machine|
     machine.vm.box = 'bento/debian-12.6'
-    machine.vm.hostname = "pomeranc
+    machine.vm.hostname = "pomeranc"
 
     #Configure Virtualbox VM specs
     machine.vm.provider "virtualbox" do |vb|

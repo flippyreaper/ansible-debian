@@ -7,8 +7,8 @@
 - name: Add the Docker Repository
   apt_repository: repo="deb https://download.docker.com/linux/ubuntu jammy stable" state=present
   register: apt_repository_output
-# - name: Install FastTrack
-#   apt: name=fasttrack-archive-keyring state=latest update_cache=true
+- name: Install FastTrack
+  apt: name=fasttrack-archive-keyring state=latest update_cache=true
 - name: Install FastTrack Repo
   apt_repository: repo="deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-fasttrack main contrib" state=present
 
@@ -31,11 +31,15 @@
     upgrade: full
 
 
-- name: Create a user 'jflippy with a home directory
+- name: Create a user 'flippy with a home directory
   ansible.builtin.user:
     name: flippy
     shell: /usr/bin/fish
     groups: docker
     create_home: yes
     append: yes
+
+
+    # dot flies
+    # homebrew
 
