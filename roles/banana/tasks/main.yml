@@ -12,13 +12,6 @@
 - name: Install FastTrack Repo
   apt_repository: repo="deb https://fasttrack.debian.net/debian-fasttrack/ bookworm-fasttrack main contrib" state=present
 
-
-# - name: Install packages
-#   apt: name={{ item }} state=latest update_cache=true
-#   loop: [git, wget, unzip, curl, docker-ce, tmux, fish, neofetch, cmatrix, nano, samba, python3]
-#   register: apt_output
-# - debug: var=apt_output
-
 - name: Install apt packages.
   ansible.builtin.apt:
     pkg: "{{ apt.packages }}"
@@ -33,32 +26,24 @@
 - name: Adding user flippy
   ansible.builtin.user:
     name: flippy
-    group: docker
+    #    group: flippy
     shell: /usr/bin/fish
     password: "{{ 'f' | password_hash('sha512') }}"
     groups: sudo, docker
     append: yes
-
-    # - name: Allow passwordless sudo for the user (Debian/Ubuntu)
-    #   lineinfile:
-    #     path: /etc/sudoers
-    #     state: present
-    #     regexp: '^username'
-    #     line: 'username ALL=(ALL) NOPASSWD:ALL'
-    #     validate: '/usr/sbin/visudo -cf %s'
-
-
-# - name: Add user to sudo group
-#   user:
-#     name: flippy # Replace with the same username
-#     groups: sudo # On Debian/Ubuntu; for CentOS/RHEL, use 'wheel'
-#     append: yes
 
 - name: Create Docker volumes
   docker_volume:
     name: "{{ item }}"
     state: present
   with_items: "{{ docker_volumes }}"
+
+- name: Create Docker network
+  docker_volume:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ docker_network }}"
+
 
 - name: Install Dockcheck
   ansible.builtin.git:

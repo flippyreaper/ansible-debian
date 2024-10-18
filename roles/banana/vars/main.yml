@@ -98,3 +98,8 @@ docker_volumes:
 - esphome-config
 - deluge-config
 
+docker_network:
+- frontend
+- backend
+- arr
+
