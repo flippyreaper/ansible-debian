@@ -16,13 +16,37 @@ Vagrant.configure('2') do |config|
     #Set IP for VM
     config.vm.network "private_network", ip: "192.168.56.43"
   
+    #Install Terraforn
+    config.vm.provision "shell", inline: $terraform_install
+
     #Install Gitlab via Ansible playbook  
     config.vm.provision "ansible_local" do |ansible|
-      ansible.playbook = "/vagrant/playbook.yml"
+      ansible.playbook = "/vagrant/ansible/playbook.yml"
     end
   end
 end
 
+
+$terraform_install = <<SCRIPT
+echo Installing terraform dependencies
+export DEBIAN_FRONTEND=noninteractive
+apt-get update; apt-get install -y gnupg software-properties-common
+
+echo Installing HashiCorp GPG key
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+
+echo Adding HashiCorp repository
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+tee /etc/apt/sources.list.d/hashicorp.list
+
+echo Installing Terraform
+apt-get update; apt-get install -y terraform
+
+terraform --version
+SCRIPT
 
   # Original comments from the Vagrant generator, saved for reference in case I need to review them later.
   
