@@ -10,11 +10,11 @@ Vagrant.configure('2') do |config|
     machine.vm.provider "virtualbox" do |vb|
       vb.name = "debian-drop"
       vb.cpus = '4'
-      vb.memory = '8192'
+      vb.memory = '4096'
     end
 
     #Set IP for VM
-    config.vm.network "private_network", ip: "192.168.56.42"
+    config.vm.network "private_network", ip: "192.168.56.43"
   
     #Install Gitlab via Ansible playbook  
     config.vm.provision "ansible_local" do |ansible|
